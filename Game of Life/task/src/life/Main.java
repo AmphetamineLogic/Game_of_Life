@@ -12,33 +12,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        size = scanner.nextInt();
-        initializeUniverse(scanner.nextInt());
-        printUniverse();
-    }
-
-    private static void initializeUniverse(int seed) {
-        universe = new char[size][size];
-        Random random = new Random(seed);
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (random.nextBoolean()) {
-                    universe[i][j] = 'O';
-                }
-                else {
-                    universe[i][j] = ' ';
-                }
-            }
-        }
-    }
-
-    private static void printUniverse() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print(universe[i][j]);
-            }
-            System.out.println();
-        }
+        Universe universe = new Universe(scanner.nextInt(), scanner.nextLong());
+        Generator generator = new Generator(universe, scanner.nextInt());
+        generator.evolute();
+        universe.printState();
     }
 }
