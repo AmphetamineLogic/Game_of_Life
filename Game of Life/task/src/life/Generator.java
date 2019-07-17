@@ -25,8 +25,9 @@ class Generator {
     }
 
     void evolute() {
-        for (int i = 0; i < numberOfGenerations; i++) {
+        for (int i = 1; i <= numberOfGenerations; i++) {
             createNextGen();
+            universe.printStateWithStats(i);
         }
     }
 
@@ -74,7 +75,6 @@ class Generator {
         }
 
         universe.setMap(nextGeneration);
-//        universe.printState();
     }
 
     private char invertCell(char currentState) {
