@@ -1,15 +1,14 @@
 package life;
 
-import java.io.IOException;
 import java.util.Random;
 
 class Universe {
     private char[][] map;
     private int size;
 
-    Universe(int size) {
+    Universe(int size, long seed) {
         this.size = size;
-        Random random = new Random(System.currentTimeMillis());
+        Random random = new Random(seed);
         map = new char[size][size];
 
         for (int i = 0; i < size; i++) {
@@ -44,48 +43,8 @@ class Universe {
                 System.out.print(map[i][j]);
             }
             System.out.println();
+//            System.out.print("|\n");
         }
+//        System.out.println("-----------------");
     }
-
-    int countAlive() {
-        int alive = 0;
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (map[i][j] == 'O') {
-                    alive++;
-                }
-            }
-        }
-        return alive;
-    }
-
-    void printStateWithStats(int generation) {
-
-            clearConsole();
-            System.out.printf("Generation #%d\nAlive: %d\n", generation, countAlive());
-            printState();
-
-    }
-
-    public final static void clearConsole()
-    {
-        try
-        {
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows"))
-            {
-                Runtime.getRuntime().exec("cls");
-            }
-            else
-            {
-                Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e)
-        {
-            //  Handle any exceptions.
-        }
-    }
-
 }
