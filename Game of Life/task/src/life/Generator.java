@@ -24,8 +24,9 @@ class Generator {
         }
     }
 
-    void evolute() {
+    void evolute() throws InterruptedException {
         for (int i = 1; i <= numberOfGenerations; i++) {
+            Thread.sleep(1000);
             createNextGen();
             universe.printStateWithStats(i);
         }

@@ -2,6 +2,7 @@ package life;
 
 import java.io.IOException;
 import java.util.Random;
+import javax.swing.*;
 
 class Universe {
     private char[][] map;
@@ -62,6 +63,8 @@ class Universe {
     void printStateWithStats(int generation) {
 
             clearConsole();
+            Main.generationLabel.setText("Generation #" + generation);
+            Main.aliveCounterLabel.setText("Alive: " + countAlive());
             System.out.printf("Generation #%d\nAlive: %d\n", generation, countAlive());
             printState();
 
